@@ -5,11 +5,15 @@ export const userLoginInfoSlice = createSlice({
   initialState: {
     loggedIn: false,
     user: "",
+    email: "",
+    password: "",
   },
   reducers: {
     logIn: (state, action) => {
       state.loggedIn = true;
-      state.user = action.payload;
+      state.user = action.payload.name;
+      state.email = action.payload.email;
+      state.password = action.payload.password;
     },
     logOut: (state) => {
       state.loggedIn = false;

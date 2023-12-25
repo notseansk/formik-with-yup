@@ -2,8 +2,10 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { validationSchemaSignUp } from "./ValidationSchema";
 import Button from "./Button";
 import { TFormDataSignUp } from "./Types";
+import { postUserInfo } from "../services/Api";
 
 const SignUp = () => {
+  // const dispatch = useDispatch();
   const initialValues = {
     name: "",
     email: "",
@@ -12,7 +14,11 @@ const SignUp = () => {
   };
 
   const onSubmit = (values: TFormDataSignUp) => {
-    console.log(values);
+    postUserInfo({
+      name: values.name,
+      email: values.email,
+      password: values.password,
+    });
   };
 
   return (
