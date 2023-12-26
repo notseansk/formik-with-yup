@@ -4,9 +4,9 @@ import Button from "../components/Button";
 import { TFormDataSignUp } from "./list/types/Types";
 import { postUserInfo } from "../services/Api";
 import { useState } from "react";
-
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const SignUp = () => {
-  // const dispatch = useDispatch();
   const [errorSignUp, setErrorSignUp] = useState("");
   const initialValues = {
     name: "",
@@ -24,8 +24,10 @@ const SignUp = () => {
       });
       if (res) {
         setErrorSignUp(res);
+        toast.error("Error creating account!");
       } else {
         setErrorSignUp("");
+        toast.success("Account Created!");
       }
     };
     checkAndPost();
@@ -109,6 +111,7 @@ const SignUp = () => {
           )}
         </Form>
       </Formik>
+      <ToastContainer />
     </div>
   );
 };
