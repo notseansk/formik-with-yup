@@ -1,15 +1,14 @@
-import HomeLayout from "./components/HomeLayout";
-import SignIn from "./components/SignIn";
-import SignUp from "./components/SignUp";
+import HomeLayout from "./layouts/HomeLayout";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import { useSelector } from "react-redux";
-// import { IUserInfoType } from "./components/Types";
-import UserDashboard from "./components/UserDashboard";
-import ProtectedRoute from "./components/ProtectedRoute";
+import UserDashboard from "./pages/UserDashboard";
+import ProtectedRoute from "./layouts/ProtectedRoute";
+import AdminLayout from "./layouts/AdminLayout";
+import AdminDashboard from "./pages/AdminDashboard";
+import RegisteredUsers from "./pages/RegisteredUsers";
+import AdminQuestionsList from "./pages/AdminQuestionsList";
 const App = () => {
-  // const { loggedIn, user } = useSelector(
-  //   (state: IUserInfoType) => state.userLoggedIn
-  // );
   return (
     <div>
       <BrowserRouter>
@@ -22,6 +21,11 @@ const App = () => {
             path="/user"
             element={<ProtectedRoute Component={UserDashboard} />}
           />
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route index element={<AdminDashboard />} />
+            <Route path="users" element={<RegisteredUsers />} />
+            <Route path="questions" element={<AdminQuestionsList />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </div>

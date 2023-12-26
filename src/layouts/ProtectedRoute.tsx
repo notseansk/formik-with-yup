@@ -2,7 +2,7 @@ import {} from "../store/userLoginInfoSlice";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { IUserInfoType } from "./Types";
+import { IUserInfoType } from "../pages/list/types/Types";
 
 interface Props {
   Component: React.ComponentType<any>;

@@ -15,7 +15,15 @@ export type IUserInfoType = {
     user: string;
   };
 };
-
-
-
+export type TUserDetails = {
+  name: string;
+  email: string;
+  password: string;
+  id: string;
+};
+export type TPost = {
+  name: string;
+  email: string;
+  password: string;
+};
 // export { TFormDataSignIn, TFormDataSignUp };

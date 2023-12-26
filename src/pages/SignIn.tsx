@@ -1,10 +1,10 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { validationSchemaSignIn } from "./ValidationSchema";
-import Button from "./Button";
+import { validationSchemaSignIn } from "../validation/ValidationSchema";
+import Button from "../components/Button";
 // import { postUserInfo } from "../services/Api";
 import { logIn } from "../store/userLoginInfoSlice";
 import { useDispatch } from "react-redux";
-import { TFormDataSignIn } from "./Types";
+import { TFormDataSignIn } from "./list/types/Types";
 import { useNavigate } from "react-router-dom";
 
 const SignIn = () => {
@@ -32,8 +32,10 @@ const SignIn = () => {
         onSubmit={onSubmit}
         validationSchema={validationSchemaSignIn}
       >
-        <Form className="flex flex-col  bg-[#1b1b1bc9] p-14 rounded-2xl">
-          <label htmlFor="name__field">username: </label>
+        <Form className="flex flex-col  bg-[#1b1b1bc9] px-14 py-10 rounded-2xl">
+          <label className="mt-2" htmlFor="name__field">
+            username:{" "}
+          </label>
           <Field
             className="rounded-xl m-2 p-2  min-w-[240px]"
             type="text"
@@ -41,18 +43,30 @@ const SignIn = () => {
             autoComplete="current-username"
             name="name"
           />
-          <ErrorMessage name="name" />
+          <ErrorMessage
+            className="text-red-500 text-xs"
+            component="div"
+            name="name"
+          />
 
-          <label htmlFor="email__field">Email: </label>
+          <label className="mt-2" htmlFor="email__field">
+            Email:{" "}
+          </label>
           <Field
             className="rounded-xl m-2 p-2  min-w-[240px]"
             type="text"
             id="email__field"
             name="email"
           />
-          <ErrorMessage name="email" />
+          <ErrorMessage
+            className="text-red-500 text-xs"
+            component="div"
+            name="email"
+          />
 
-          <label htmlFor="password__field">Password: </label>
+          <label className="mt-2" htmlFor="password__field">
+            Password:{" "}
+          </label>
           <Field
             className="rounded-xl m-2 p-2  min-w-[240px]"
             type="password"
@@ -60,7 +74,11 @@ const SignIn = () => {
             autoComplete="current-password"
             name="password"
           />
-          <ErrorMessage name="password" />
+          <ErrorMessage
+            className="text-red-500 text-xs"
+            component="div"
+            name="password"
+          />
 
           <Button page="sign in" />
         </Form>

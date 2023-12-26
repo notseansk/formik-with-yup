@@ -12,7 +12,12 @@ export const validationSchemaSignUp = Yup.object({
   email: Yup.string()
     .email("Invalid email format")
     .required("email is required"),
-  password: Yup.string().required("password is required"),
+  password: Yup.string()
+    .matches(
+      /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
+      "must contain at least 8 characters, one uppercase, one number and one special case character"
+    )
+    .required("password is required"),
   passwordConfirm: Yup.string()
     .oneOf([Yup.ref("password")], "passwords must match")
     .required("Confirm Password is required"),
