@@ -7,7 +7,9 @@ const RegisteredUsers = () => {
   const getUsers = async () => {
     try {
       let res = await fetchUsers();
-      setUsers(res);
+      if (res) {
+        setUsers(res);
+      }
     } catch (error) {
       console.log(
         "There was some error fetching users in admin panel - ",
