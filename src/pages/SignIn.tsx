@@ -94,6 +94,13 @@ const SignIn = () => {
           <Button page="sign in" />
         </Form>
       </Formik>
+      <div className="p-6">
+        <p className="font-bold">Demo data: </p>
+        <p>username: asd</p>
+        <p>email: asdasd@gmail.com</p>
+        <p>password: asd</p>
+      </div>
+
       <ToastContainer />
     </div>
   );
