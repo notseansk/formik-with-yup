@@ -26,13 +26,14 @@ const RegisteredUsers = () => {
         List of Registered Users
       </h2>
       <div className="bg-[#313131c9] rounded-xl w-full min-h-[90%] p-8">
-        <div className="grid grid-cols-4 p-3 ">
-          <p className="text-lg">User ID</p>
-          <p className="text-lg">Users</p>
-          <p className="text-lg">Email</p>
-          <button>Action</button>
-        </div>
-        <div className="rounded-lg bg-[#1b1b1b95] p-3">
+        <div className="rounded-lg bg-[#1b1b1b95] p-3 ">
+          <div className="grid grid-cols-5 p-3 border-b-2 border-sky-600 ">
+            <p className="text-lg">User ID</p>
+            <p className="text-lg">Users</p>
+            <p className="text-lg">Email</p>
+            <p className="text-lg">Password</p>
+            <button>Action</button>
+          </div>
           {users ? (
             users.map((oneUserDetail) => (
               <AdminUserComponent
@@ -40,6 +41,7 @@ const RegisteredUsers = () => {
                 name={oneUserDetail.name}
                 email={oneUserDetail.email}
                 id={oneUserDetail.id}
+                password={oneUserDetail.password}
                 getUsers={getUsers}
               />
             ))

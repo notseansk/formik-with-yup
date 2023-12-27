@@ -3,10 +3,11 @@ interface Props {
   name: string;
   email: string;
   id: string;
+  password: string;
   getUsers: () => void;
 }
 
-const AdminUserComponent = ({ name, email, id, getUsers }: Props) => {
+const AdminUserComponent = ({ name, email, id, getUsers, password }: Props) => {
   const handleDelete = async () => {
     try {
       let res = await fetch(`${USER_URL}/${id}`, {
@@ -23,10 +24,11 @@ const AdminUserComponent = ({ name, email, id, getUsers }: Props) => {
   };
   return (
     <>
-      <div className="grid grid-cols-4 m-6">
+      <div className="grid grid-cols-5 m-6">
         <p className="text-sm">{id}</p>
         <p className="text-sm">{name}</p>
         <p className="text-sm">{email}</p>
+        <p className="text-sm">{password}</p>
         <button
           onClick={() => {
             handleDelete();

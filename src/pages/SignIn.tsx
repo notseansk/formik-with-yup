@@ -1,7 +1,6 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { validationSchemaSignIn } from "../validation/ValidationSchema";
 import Button from "../components/Button";
-// import { postUserInfo } from "../services/Api";
 import { logIn } from "../store/userLoginInfoSlice";
 import { useDispatch } from "react-redux";
 import { TFormDataSignIn } from "./list/types/Types";
@@ -12,9 +11,6 @@ import "react-toastify/dist/ReactToastify.css";
 const SignIn = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // const { loggedIn, user } = useSelector(
-  //   (state: IUserInfoType) => state.userLoggedIn
-  // );
 
   const initialValues = {
     name: "",
