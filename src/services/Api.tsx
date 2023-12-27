@@ -25,11 +25,39 @@ export const postUserInfo = async (
   }
 };
 
-export const fetchUsers = async (): Promise<TUserDetails[]> => {
-  let res = await fetch(USER_URL, {
-    method: "GET",
-    headers: { "Content-Type": "application/json" },
-  });
-  let data = await res.json();
-  return data;
+export const fetchUsers = async (): Promise<TUserDetails[] | void> => {
+  try {
+    let res = await fetch(USER_URL, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    });
+    let data = await res.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+type UserSigningIn = {
+  email: string;
+  password: string;
+};
+export const checkLoginCredentials = async (
+  user: UserSigningIn
+): Promise<string | void> => {
+  try {
+    let res = await fetch(
+      `${USER_URL}?email=${user.email}&password=${user.password}`,
+      {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+
+    if (!res.ok) {
+      return "Invalid Credentials!";
+    }
+  } catch (error) {
+    console.log(error);
+  }
 };

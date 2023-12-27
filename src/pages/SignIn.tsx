@@ -6,7 +6,9 @@ import { logIn } from "../store/userLoginInfoSlice";
 import { useDispatch } from "react-redux";
 import { TFormDataSignIn } from "./list/types/Types";
 import { useNavigate } from "react-router-dom";
-
+import { checkLoginCredentials } from "../services/Api";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const SignIn = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -21,8 +23,17 @@ const SignIn = () => {
   };
 
   const onSubmit = (values: TFormDataSignIn) => {
-    dispatch(logIn(values));
-    navigate("/user");
+    const temp = async () => {
+      let res = await checkLoginCredentials(values);
+      if (res === undefined) {
+        dispatch(logIn(values));
+        navigate("/user");
+      } else {
+        console.log(res);
+        toast.error(res);
+      }
+    };
+    temp();
   };
 
   return (
@@ -83,6 +94,7 @@ const SignIn = () => {
           <Button page="sign in" />
         </Form>
       </Formik>
+      <ToastContainer />
     </div>
   );
 };
